@@ -249,6 +249,15 @@ namespace Pegasus.DtsWrapper
     }
 
     /// <summary>
+    /// OleDb Source Access Mode
+    /// </summary>
+    public enum AdoNetSourceAccessMode
+    {
+        TableOrViewName = 0,
+        SqlCommand = 2
+    }
+
+    /// <summary>
     /// Stand-in for DTSInsertPlacement
     /// </summary>
     public enum InsertPlacement

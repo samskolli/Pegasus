@@ -47,10 +47,16 @@ namespace Pegasus.Demo
 
 
             //  //  //  Data Flow Examples
-            DataFlowExample de = new DataFlowExample();
+            //DataFlowExample de = new DataFlowExample();
 
             //  Load all text files in a folder to a database
-            de.GenerateProjectToLoadTextFilesToSqlServerDatabase();
+            //de.GenerateProjectToLoadTextFilesToSqlServerDatabase();
+
+
+
+            //  //  //  AdoNet Source and Destination
+            AdoNetSourceAndDestination ado = new AdoNetSourceAndDestination();
+            ado.DFTWithAdoNetSourceAndDestination();
         }
 
         private static void CreateFolder(string folderPath)

@@ -3,69 +3,26 @@ using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
 using System;
 using System.Collections.Generic;
 
-
 namespace Pegasus.DtsWrapper
 {
-    public class ISDestinationComponent : ISPipelineComponent
+    public class ISAdoNetDestinationComponent : ISDestinationComponent
     {
         #region ctor
 
-        /// <summary>
-        /// ctor that accepts a IDTSComponentMEtadata100
-        /// </summary>
-        /// <param name="component"></param>
-        internal ISDestinationComponent(IDTSComponentMetaData100 component) : base(component)
-        {
-
-        }
-
-        public ISDestinationComponent(ISDataFlowTask parentDataFlowTask, string componentMoniker, string componentname)
-            : base(parentDataFlowTask, componentMoniker, componentname)
-        {
-
-        }
-
-        #endregion
-
-        #region Input
-
-        private ISInput _input;
-        public ISInput Input
-        {
-            get
-            {
-                if (_input == null)
-                {
-                    _input = new ISInput(this);
-                }
-                return _input;
-            }
-            set { }
-        }
-
-        internal IDTSInput100 DtsInput { get { return ComponentMetaData.InputCollection[0]; } }
-
-        #endregion
-    }
-
-    public class ISOleDbDestinationComponent : ISDestinationComponent
-    {
-        #region ctor
-
-        internal ISOleDbDestinationComponent(IDTSComponentMetaData100 component) : base(component)
+        internal ISAdoNetDestinationComponent(IDTSComponentMetaData100 component) : base(component)
         {
             InitDefaults();
         }
 
-        public ISOleDbDestinationComponent(ISDataFlowTask parentDataFlowTask, string componentname) :
-            base(parentDataFlowTask, "Microsoft.OleDbDestination", componentname)
+        public ISAdoNetDestinationComponent(ISDataFlowTask parentDataFlowTask, string componentname) :
+            base(parentDataFlowTask, "Microsoft.SqlServer.Dts.Pipeline.ADONETDestination, Microsoft.SqlServer.ADONETDest, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91", componentname)
         {
             //InitDefaults();
             ExternalColumnInputColumnMap = new List<ExternalColumnInputMap>();
 
         }
 
-        public ISOleDbDestinationComponent(ISDataFlowTask parentDataFlowTask, string componentName,
+        public ISAdoNetDestinationComponent(ISDataFlowTask parentDataFlowTask, string componentName,
             ISPipelineComponent sourceComponent,
             string sourceOutputName = "") :
             this(parentDataFlowTask, componentName)
@@ -97,35 +54,19 @@ namespace Pegasus.DtsWrapper
         public string DestinationPassword { get; set; }
 
         #endregion
-        
+
         #region Dts Properties
 
-        #region AccessMode
-
-        //public OleDbDestinationAccessMode AccessMode
-        //{
-        //    get { return ((OleDbDestinationAccessMode)CustomPropertyGetter<int>("AccessMode")); }
-        //    set { CustomPropertySetter<int>("OleDbDestinationAccessMode", (int)value); }
-        //}
-
-        public int AccessMode
+        #region BatchSize
+        
+        public int BatchSize
         {
-            get { return CustomPropertyGetter<int>("AccessMode"); }
-            set { CustomPropertySetter<int>("AccessMode", value); }
+            get { return CustomPropertyGetter<int>("BatchSize"); }
+            set { CustomPropertySetter<int>("BatchSize", value); }
         }
 
         #endregion
-
-        #region AlwaysUseDefaultCodePage
-
-        public bool AlwaysUseDefaultCodePage
-        {
-            get { return CustomPropertyGetter<bool>("AlwaysUseDefaultCodePage"); }
-            set { CustomPropertySetter<bool>("AlwaysUseDefaultCodePage", value); }
-        }
-
-        #endregion
-
+        
         #region CommandTimeOut
 
         public int CommandTimeout
@@ -161,104 +102,26 @@ namespace Pegasus.DtsWrapper
 
         #endregion
 
-        #region DefaultCodePage
+        #region TableOrViewName
 
-        public int DefaultCodePage
+        public string TableOrViewName
         {
-            get { return CustomPropertyGetter<int>("DefaultCodePage"); }
-            set { CustomPropertySetter<int>("DefaultCodePage", value); }
-        }
-
-        #endregion
-
-        #region FastLoadKeepIdentity
-
-        public bool FastLoadKeepIdentity
-        {
-            get { return CustomPropertyGetter<bool>("FastLoadKeepIdentity"); }
-            set { CustomPropertySetter<bool>("FastLoadKeepIdentity", value); }
-        }
-
-        #endregion
-
-        #region FastLoadKeepNulls
-
-        public bool FastLoadKeepNulls
-        {
-            get { return CustomPropertyGetter<bool>("FastLoadKeepNulls"); }
-            set { CustomPropertySetter<bool>("FastLoadKeepNulls", value); }
-        }
-
-        #endregion
-
-        #region FastLoadMaxInsertCommitSize
-
-        public int FastLoadMaxInsertCommitSize
-        {
-            get { return CustomPropertyGetter<int>("FastLoadMaxInsertCommitSize"); }
-            set { CustomPropertySetter<int>("FastLoadMaxInsertCommitSize", value); }
-        }
-
-        #endregion
-
-        #region FastLoadOptions
-
-        public string FastLoadOptions
-        {
-            get { return CustomPropertyGetter<string>("FastLoadOptions"); }
-            set { CustomPropertySetter<string>("FastLoadOptions", value); }
-        }
-
-        private bool _tableLock;
-        public bool TableLock
-        {
-            get { return FastLoadOptions.ToLower().Contains("TABLOCK".ToLower()) ? true : false; }
+            get { return CustomPropertyGetter<string>("TableOrViewName"); }
             set
             {
-                _tableLock = true;
-                FastLoadOptions = FastLoadOptions + (FastLoadOptions.Length == 0 ? "TABLOCK".ToUpper() : (FastLoadOptions.ToLower().Contains("TABLOCK".ToLower()) ? "" : ",TABLOCK".ToUpper()));
-            }
-        }
-
-        private bool _checkConstraints;
-        public bool CheckConstraints
-        {
-            get { return FastLoadOptions.ToLower().Contains("CHECK_CONSTRAINTS".ToLower()) ? true : false; }
-            set
-            {
-                _checkConstraints = true;
-                FastLoadOptions = (FastLoadOptions.Length == 0 ? FastLoadOptions + "CHECK_CONSTRAINTS".ToUpper() : (FastLoadOptions.ToLower().Contains("CHECK_CONSTRAINTS".ToLower()) ? "" : "CHECK_CONSTRAINTS".ToUpper() + "," + FastLoadOptions));
+                CustomPropertySetter<string>("TableOrViewName", value);
+                PopulateMetadata();
             }
         }
 
         #endregion
 
-        #region OpenRowset
-
-        public string OpenRowset
+        private void PopulateMetadata()
         {
-            get { return CustomPropertyGetter<string>("OpenRowset"); }
-            set
+            bool retrieved = RetrieveMetaData();
+            if (retrieved)
             {
-                //AccessMode = OleDbDestinationAccessMode.OpenRowSet_FastLoad;
-                AccessMode = (int)OleDbDestinationAccessMode.OpenRowSet_FastLoad;
-                CustomPropertySetter<string>("OpenRowset", value);
-                if (!(String.IsNullOrEmpty(Connection)))
-                {
-                    bool retrieved = false;
-                    if (!(String.IsNullOrEmpty(DestinationPassword)))
-                    {
-                        retrieved = RetrieveMetaData(Connection, DestinationPassword);
-                    }
-                    else
-                    {
-                        retrieved = RetrieveMetaData();
-                    }
-                    if (retrieved)
-                    {
-                        MapInputColumnsToExternalColumns();
-                    }
-                }       
+                MapInputColumnsToExternalColumns();
             }
         }
 
@@ -314,46 +177,7 @@ namespace Pegasus.DtsWrapper
             }
         }
 
-        private void PopulateMetadata()
-        {
-            bool retrieved = RetrieveMetaData();
-        }
-
         #endregion
-
-        #region OpenRowsetVariable
-
-        public string OpenRowsetVariable
-        {
-            get { return CustomPropertyGetter<string>("OpenRowsetVariable"); }
-            set
-            {
-                //AccessMode = OleDbDestinationAccessMode.OpenRowSet_Variable;
-                CustomPropertySetter<string>("OpenRowsetVariable", value);
-            }
-        }
-
-        #endregion
-
-        #region SqlCommand
-
-        public string SqlCommand
-        {   
-            get { return CustomPropertyGetter<string>("SqlCommand"); }
-            set
-            {
-                //AccessMode = OleDbDestinationAccessMode.SqlCommand;
-                CustomPropertySetter<string>("SqlCommand", value);
-                //if (_connectionAssgined == true)
-                //    RetrieveMetaData();
-            }
-        }
-
-        #endregion
-
-        #endregion
-
-        #region Methods
 
         #region Assign Connection Manager
 
@@ -369,7 +193,7 @@ namespace Pegasus.DtsWrapper
         public void AssignConnectionManager(ISConnectionManager cm)
         {
             AssignConnectionManager(cm.ConnectionManager);
-            if (!(String.IsNullOrEmpty(OpenRowset)))
+            if (!(String.IsNullOrEmpty(TableOrViewName)))
                 RetrieveMetaData(Connection, DestinationPassword);
         }
 
@@ -423,24 +247,5 @@ namespace Pegasus.DtsWrapper
         }
 
         #endregion
-
-        #endregion
-
-    }
-
-    public struct ExternalMetadataColumn
-    {
-        public string ExternalColumnName;
-        public SSISDataType DataType;
-        public int Length;
-        public int Precision;
-        public int Scale;
-        public int CodePage;
-    }
-
-    public struct ExternalColumnInputMap
-    {
-        public ExternalMetadataColumn ExternalColumn { get; set; }
-        public string InputColumnName { get; set; }
     }
 }

@@ -67,6 +67,16 @@ namespace Pegasus.DtsWrapper
 
         #region Properties
 
+        #region Accessmode
+
+        public int Accessmode
+        {
+            get { return CustomPropertyGetter<int>("Accessmode"); }
+            set { CustomPropertySetter<int>("Accessmode", value); }
+        }
+
+        #endregion
+
         #region CommandTimeOut
 
         public int CommandTimeout

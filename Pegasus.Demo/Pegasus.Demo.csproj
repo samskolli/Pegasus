@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdoNetSourceAndDestination.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="ControlFlowTaskExample.cs" />
     <Compile Include="DataFlowExample.cs" />

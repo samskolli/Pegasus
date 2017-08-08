@@ -31,6 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.SqlServer.ADONETDest, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.SqlServer.ADONETDest\v4.0_13.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.ADONETDest.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ADONETSrc, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.SqlServer.ADONETSrc\v4.0_13.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.ADONETSrc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.SQLServer.DTSPipelineWrap, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -91,6 +99,8 @@
     <Compile Include="ControlFlowTasks\ISSequence.cs" />
     <Compile Include="Converter.cs" />
     <Compile Include="ISAttributes.cs" />
+    <Compile Include="PipelineComponents\ISAdoNetDestination.cs" />
+    <Compile Include="PipelineComponents\ISAdoNetSourceComponent.cs" />
     <Compile Include="PipelineComponents\ISConditionalSplitOutput.cs" />
     <Compile Include="ControlFlowTasks\ISExecutePackageTask.cs" />
     <Compile Include="ControlFlowTasks\ISExecutePackageTaskParameterBinding.cs" />
