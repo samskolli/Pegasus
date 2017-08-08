@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
 using Microsoft.SqlServer.Dts.Runtime.Wrapper;
 
@@ -8,7 +9,7 @@ namespace Pegasus.DtsWrapper
     {
         #region Properties
 
-        #region Parent COmponent
+        #region Parent Component
 
         public ISPipelineComponent ParentComponent { get; set; }
 
@@ -51,10 +52,10 @@ namespace Pegasus.DtsWrapper
 
         #region DataType
 
-        public string DataType
+        public SSISDataType DataType
         {
-            get { return ExternalMetadataColumn.DataType.ToString(); }
-            set { ExternalMetadataColumn.DataType = (DataType)Enum.Parse(typeof(DataType), value); }
+            get { return DtsUtility.EnumAToEnumB<Microsoft.SqlServer.Dts.Runtime.Wrapper.DataType, SSISDataType>(ExternalMetadataColumn.DataType); }
+            set { ExternalMetadataColumn.DataType = DtsUtility.EnumAToEnumB<SSISDataType, DataType>(value); }
         }
 
         #endregion
@@ -197,7 +198,7 @@ namespace Pegasus.DtsWrapper
                     input.ID,
                     vInput,
                     vInput.VirtualInputColumnCollection[inputColumnName].LineageID,
-                    StringToEnum<DTSUsageType>("UT_READONLY")
+                    DTSUsageType.UT_READONLY
                     );
 
             IDTSInputColumn100 inputColumn = Input.InputColumnCollection[inputColumnName];
@@ -231,7 +232,7 @@ namespace Pegasus.DtsWrapper
 
         public void AssociateWithOutputColumn(string outputColumnName)
         {
-            ISOutputColumn outCol = new ISOutputColumn(ParentComponent, Output.Name, outputColumnName, "RD_FailComponent", "RD_FailComponent");
+            ISOutputColumn outCol = new ISOutputColumn(ParentComponent, Output.Name, outputColumnName, RowDisposition.RD_FailComponent, RowDisposition.RD_FailComponent);
             outCol.SetDataTypeProperties(DataType, Length, Precision, Scale, CodePage);
             outCol.OutputColumn.ExternalMetadataColumnID = ID;
 
@@ -261,7 +262,7 @@ namespace Pegasus.DtsWrapper
 
         #region Set Data Type
 
-        public void SetDataType(string dataType, int length, int precision, int scale, int codePage)
+        public void SetDataType(SSISDataType dataType, int length, int precision, int scale, int codePage)
         {
             DataType = dataType;
             Length = length;
