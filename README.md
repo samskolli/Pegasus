@@ -3,12 +3,12 @@ A tool to create SSIS packages programmatically.
 
 This tool uses the [SSIS Object Model and API](https://msdn.microsoft.com/en-us/library/mt574046.aspx).
 
-Wrappers are created around a DtsObject to simplify usage and hide operations where possible.
+Wrappers are created around a DtsObject to simplify usage and hide operations where possible. Checkout the demo examples for usage. More examples to be added.
 
 
 ## Available DtsObjects
 
-Currently, the following are available.
+Currently, the following are available. More to follow.
 
 ### Control Flow Tasks:
 1. Package
