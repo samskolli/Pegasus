@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D2ACB36A-5C63-4287-B7C9-47DB5DF9D042}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pegasus.DtsWrapper</RootNamespace>
+    <AssemblyName>Pegasus.DtsWrapper</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.SQLServer.DTSPipelineWrap, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.SqlServer.DTSPipelineWrap\v4.0_11.0.0.0__89845dcd8080cc91\Microsoft.SQLServer.DTSPipelineWrap.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_32\Microsoft.SqlServer.DTSRuntimeWrap\v4.0_13.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.DTSRuntimeWrap.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ExecPackageTaskWrap, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.SqlServer.ExecPackageTaskWrap\v4.0_13.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.ExecPackageTaskWrap.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.SqlServer.ManagedDTS\v4.0_11.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.ManagedDTS.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SQLServer.PipelineHost, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.SqlServer.PipelineHost\v4.0_13.0.0.0__89845dcd8080cc91\Microsoft.SQLServer.PipelineHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.SqlServer.ScriptTask\v4.0_13.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.ScriptTask.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.SQLTask, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_32\Microsoft.SqlServer.SQLTask\v4.0_13.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.SQLTask.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.SqlServer.TxScript\v4.0_13.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.TxScript.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.VSTAScriptingLib, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.SqlServer.VSTAScriptingLib\v4.0_13.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.VSTAScriptingLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ControlFlowBaseObjects\ISContainer.cs" />
+    <Compile Include="ControlFlowBaseObjects\ISExecutable.cs" />
+    <Compile Include="ControlFlowBaseObjects\ISPrecedenceConstraint.cs" />
+    <Compile Include="ControlFlowTasks\ISPackage.cs" />
+    <Compile Include="ControlFlowTasks\ISDataFlowTask.cs" />
+    <Compile Include="ConnectionManagers\ISBaseFileConnectionManager.cs" />
+    <Compile Include="ConnectionManagers\ISConnectionManagers.cs" />
+    <Compile Include="ConnectionManagers\ISDatabaseConnectionManagers.cs" />
+    <Compile Include="ControlFlowTasks\ISSequence.cs" />
+    <Compile Include="Converter.cs" />
+    <Compile Include="ISAttributes.cs" />
+    <Compile Include="ISConditionalSplitOutput.cs" />
+    <Compile Include="ControlFlowTasks\ISExecutePackageTask.cs" />
+    <Compile Include="ControlFlowTasks\ISExecutePackageTaskParameterBinding.cs" />
+    <Compile Include="ControlFlowTasks\ISExecuteSqlTask.cs" />
+    <Compile Include="ControlFlowBaseObjects\ISEventHandler.cs" />
+    <Compile Include="ControlFlowTasks\ISScriptTask.cs" />
+    <Compile Include="ISDestinationComponent.cs" />
+    <Compile Include="ISExternalMetadataColumn.cs" />
+    <Compile Include="ISMulticastComponent.cs" />
+    <Compile Include="PipelineComponents\ISDerivedColumnComponent.cs" />
+    <Compile Include="PipelineComponents\ISFlatFileSourceComponent.cs" />
+    <Compile Include="PipelineComponents\ISScriptComponent.cs" />
+    <Compile Include="PipelineComponents\ISConditionalSplitComponent.cs" />
+    <Compile Include="ISEnums.cs" />
+    <Compile Include="ControlFlowBaseObjects\ISEventsProvider.cs" />
+    <Compile Include="ControlFlowBaseObjects\ISEventsProviderAsIDTSSequence.cs" />
+    <Compile Include="ControlFlowBaseObjects\ISTaskHost.cs" />
+    <Compile Include="ConnectionManagers\ISFlatFileColumn.cs" />
+    <Compile Include="ConnectionManagers\ISFlatFileConnectionManagers.cs" />
+    <Compile Include="ISLookupOutputColumn.cs" />
+    <Compile Include="PipelineComponents\ColumnInputOutput\ISInput.cs" />
+    <Compile Include="PipelineComponents\ColumnInputOutput\ISInputColumn.cs" />
+    <Compile Include="PipelineComponents\ISLookupComponent.cs" />
+    <Compile Include="ISParameter.cs" />
+    <Compile Include="ISPath.cs" />
+    <Compile Include="PipelineComponents\ISRowCountComponent.cs" />
+    <Compile Include="PipelineComponents\ISSourceComponents.cs" />
+    <Compile Include="PipelineComponents\ColumnInputOutput\ISOutput.cs" />
+    <Compile Include="PipelineComponents\ColumnInputOutput\ISOutputColumn.cs" />
+    <Compile Include="PipelineComponents\ISPipelineComponent.cs" />
+    <Compile Include="ISProperty.cs" />
+    <Compile Include="Utility\DtsUtility.cs" />
+    <Compile Include="ISProject.cs" />
+    <Compile Include="ISVariable.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

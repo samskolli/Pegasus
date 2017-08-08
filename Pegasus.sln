@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pegasus.DtsWrapper", "Pegasus.DtsWrapper\Pegasus.DtsWrapper.csproj", "{D2ACB36A-5C63-4287-B7C9-47DB5DF9D042}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pegasus.Demo", "Pegasus.Demo\Pegasus.Demo.csproj", "{166AEC9B-F6B3-4C93-8023-F68C6EC709A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2ACB36A-5C63-4287-B7C9-47DB5DF9D042}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2ACB36A-5C63-4287-B7C9-47DB5DF9D042}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2ACB36A-5C63-4287-B7C9-47DB5DF9D042}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2ACB36A-5C63-4287-B7C9-47DB5DF9D042}.Release|Any CPU.Build.0 = Release|Any CPU
+		{166AEC9B-F6B3-4C93-8023-F68C6EC709A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{166AEC9B-F6B3-4C93-8023-F68C6EC709A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{166AEC9B-F6B3-4C93-8023-F68C6EC709A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{166AEC9B-F6B3-4C93-8023-F68C6EC709A0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
