@@ -94,12 +94,14 @@ namespace Pegasus.DtsWrapper
 
         #region TableOrViewName
 
+        
         public string TableOrViewName
         {
             get { return CustomPropertyGetter<string>("TableOrViewName"); }
             set
             {
                 AccessMode = (int)AdoNetSourceAccessMode.TableOrViewName;
+
                 CustomPropertySetter<string>("TableOrViewName", value);
                 if (_connectionAssgined == true)
                     RetrieveMetaData();

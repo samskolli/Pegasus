@@ -28,7 +28,7 @@ Currently, the following are available. More to follow.
 7. Flat File Source Component
 8. Multicast Component
 9. Script Component
-10.Rowcount Component
+10. Rowcount Component
 
 ### Others:
 1. Variables
