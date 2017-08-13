@@ -79,9 +79,7 @@ namespace Pegasus.Demo
                 }
                 prevDft = dft;
             }
-
             
-
             mainProject.SaveToDisk();
 
         }

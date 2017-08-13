@@ -51,6 +51,8 @@
     <Compile Include="Constants.cs" />
     <Compile Include="ControlFlowTaskExample.cs" />
     <Compile Include="DataFlowExample.cs" />
+    <Compile Include="Dcoumenter.cs" />
+    <Compile Include="ExcelExample.cs" />
     <Compile Include="HelperCode\FileHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProjectExample.cs" />

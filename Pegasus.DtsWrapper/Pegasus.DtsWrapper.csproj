@@ -88,16 +88,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConnectionManagers\ISExcelConnectionManager.cs" />
     <Compile Include="ControlFlowBaseObjects\ISContainer.cs" />
     <Compile Include="ControlFlowBaseObjects\ISExecutable.cs" />
     <Compile Include="ControlFlowBaseObjects\ISPrecedenceConstraint.cs" />
-    <Compile Include="ControlFlowTasks\ISPackage.cs" />
+    <Compile Include="Containers\ISPackage.cs" />
     <Compile Include="ControlFlowTasks\ISDataFlowTask.cs" />
     <Compile Include="ConnectionManagers\ISBaseFileConnectionManager.cs" />
     <Compile Include="ConnectionManagers\ISConnectionManagers.cs" />
     <Compile Include="ConnectionManagers\ISDatabaseConnectionManagers.cs" />
-    <Compile Include="ControlFlowTasks\ISSequence.cs" />
+    <Compile Include="Containers\ISSequence.cs" />
     <Compile Include="Converter.cs" />
+    <Compile Include="ForLoopContainer.cs" />
     <Compile Include="ISAttributes.cs" />
     <Compile Include="PipelineComponents\ISAdoNetDestination.cs" />
     <Compile Include="PipelineComponents\ISAdoNetSourceComponent.cs" />
@@ -109,6 +111,7 @@
     <Compile Include="ControlFlowTasks\ISScriptTask.cs" />
     <Compile Include="PipelineComponents\ISDestinationComponent.cs" />
     <Compile Include="PipelineComponents\ColumnInputOutput\ISExternalMetadataColumn.cs" />
+    <Compile Include="PipelineComponents\ISExcelSourceComponent.cs" />
     <Compile Include="PipelineComponents\ISMulticastComponent.cs" />
     <Compile Include="PipelineComponents\ISDerivedColumnComponent.cs" />
     <Compile Include="PipelineComponents\ISFlatFileSourceComponent.cs" />

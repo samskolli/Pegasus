@@ -249,6 +249,17 @@ namespace Pegasus.DtsWrapper
     }
 
     /// <summary>
+    /// Excel Source Access Mode
+    /// </summary>
+    public enum ExcelSourceAccessMode
+    {
+        OpenRowSet = 0,
+        OpenRowSet_Variable = 1,
+        SqlCommand = 2,
+        SqlCommand_Variable = 3
+    }
+
+    /// <summary>
     /// OleDb Source Access Mode
     /// </summary>
     public enum AdoNetSourceAccessMode
@@ -441,5 +452,16 @@ namespace Pegasus.DtsWrapper
         SqlCommand = 2,
         OpenRowSet_FastLoad = 3,
         OpenRowSet_FastLoad_Variable = 4
+    }
+
+    public enum ExcelVersion
+    {
+        DTSExcelVer_2007,
+        DTSExcelVer_2013,
+        DTSExcelVer_2016,
+        DTSExcelVer_3,
+        DTSExcelVer_4,
+        DTSExcelVer_5,
+        DTSExcelVer_8
     }
 }

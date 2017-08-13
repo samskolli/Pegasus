@@ -55,8 +55,14 @@ namespace Pegasus.Demo
 
 
             //  //  //  AdoNet Source and Destination
-            AdoNetSourceAndDestination ado = new AdoNetSourceAndDestination();
-            ado.DFTWithAdoNetSourceAndDestination();
+            //AdoNetSourceAndDestination ado = new AdoNetSourceAndDestination();
+            //ado.DFTWithAdoNetSourceAndDestination();
+
+
+
+            //  //  //  Excel Example
+            ExcelExample ee = new ExcelExample();
+            ee.ExcelToSqlServerTable();
         }
 
         private static void CreateFolder(string folderPath)

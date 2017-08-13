@@ -237,7 +237,9 @@ namespace Pegasus.DtsWrapper
                 }
             }
             if (!(columnAddedToInput))
+            {
                 InputColumn = ParentComponent.SetInputColumnDTSUsageType(Input, inputColumnName, usageType);
+            }
         }
 
         public ISInputColumn(ISPipelineComponent parentComponent, string inputName, string inputColumnName, UsageType usageType, RowDisposition errorRowDisposition, RowDisposition truncationRowDisposition)

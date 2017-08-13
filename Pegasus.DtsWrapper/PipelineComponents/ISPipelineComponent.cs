@@ -711,5 +711,34 @@ namespace Pegasus.DtsWrapper
         internal int _numberOfInputsAllowed = -1;
 
         #endregion
+
+        #region Output Collection
+
+        public List<ISOutput> GetOutputCollection()
+        {
+            List<ISOutput> _outputCollection = new List<ISOutput>();
+            for(int i =0; i < ComponentMetaData.OutputCollection.Count; i++)
+            {
+                _outputCollection.Add(new ISOutput(this, i));
+            }
+            return _outputCollection;
+        }
+
+        #endregion
+
+        #region Output Collection
+
+        public List<ISInput> GetInputCollection()
+        {
+            List<ISInput> _inputCollection = new List<ISInput>();
+            for (int i = 0; i < ComponentMetaData.InputCollection.Count; i++)
+            {
+                _inputCollection.Add(new ISInput(this, i));
+            }
+            return _inputCollection;
+        }
+
+        #endregion
+
     }
 }

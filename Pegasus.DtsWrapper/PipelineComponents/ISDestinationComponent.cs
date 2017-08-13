@@ -409,7 +409,7 @@ namespace Pegasus.DtsWrapper
                             if (viCols[vi].ToLower() == map.InputColumnName.ToLower())
                             {
                                 ISInputColumn ic = new ISInputColumn(this, DtsInput.Name, viCols[vi], UsageType.UT_READONLY);
-                                ic.ExternalMetadataColumnID = extCol.ID;
+                                DesignTimeComponent.MapInputColumn(DtsInput.ID, ic.ID, extCol.ID);
                                 extCol.DataType = ic.DataType;
                                 extCol.CodePage = ic.CodePage;
                                 extCol.Length = ic.Length;

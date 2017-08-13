@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using System.Collections.Generic;
 
 namespace Pegasus.DtsWrapper
 {
@@ -163,6 +164,16 @@ namespace Pegasus.DtsWrapper
 
         #endregion
 
-        #endregion       
+        #endregion
+
+        public List<ISInputColumn> GetColumnCollection()
+        {
+            List<ISInputColumn> inputColumns = new List<ISInputColumn>();
+            foreach (IDTSInputColumn100 outputColumn in Input.InputColumnCollection)
+            {
+                inputColumns.Add(new ISInputColumn(ParentComponent, Input.Name, outputColumn.Name, DtsUtility.EnumAToEnumB<DTSUsageType, UsageType>(outputColumn.UsageType)));
+            }
+            return inputColumns;
+        }
     }
 }

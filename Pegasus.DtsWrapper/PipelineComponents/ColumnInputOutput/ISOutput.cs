@@ -277,6 +277,16 @@ namespace Pegasus.DtsWrapper
             return Output.CustomPropertyCollection[propertyName].Value;
         }
 
+        public List<ISOutputColumn> GetColumnCollection()
+        {
+            List<ISOutputColumn> _outputColumns = new List<ISOutputColumn>();
+            foreach(IDTSOutputColumn100 outputColumn in Output.OutputColumnCollection)
+            {
+                _outputColumns.Add(new ISOutputColumn(this.ParentComponent, Output.Name, outputColumn.Name));
+            }
+            return _outputColumns;
+        }
+
         #endregion
     }
 }
