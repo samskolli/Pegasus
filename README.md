@@ -1,5 +1,5 @@
 # Pegasus
-A tool to create SSIS packages programmatically.
+A tool to create SSIS packages programmatically. For SQL Server 2016
 
 This tool uses the [SSIS Object Model and API](https://msdn.microsoft.com/en-us/library/mt574046.aspx).
 
@@ -29,6 +29,10 @@ Currently, the following are available. More to follow.
 8. Multicast Component
 9. Script Component
 10. Rowcount Component
+11. Ado.Net Source Component
+12. Ado.Net Destination Component
+13. Excel Source Component
+14. Flat File Destination Component
 
 ### Others:
 1. Variables
