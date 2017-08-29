@@ -54,6 +54,7 @@
     <Compile Include="Dcoumenter.cs" />
     <Compile Include="ExcelExample.cs" />
     <Compile Include="HelperCode\FileHelper.cs" />
+    <Compile Include="HelperCode\SqlServerHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProjectExample.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
