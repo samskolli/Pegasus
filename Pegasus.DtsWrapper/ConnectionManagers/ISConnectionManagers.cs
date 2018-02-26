@@ -131,7 +131,12 @@ namespace Pegasus.DtsWrapper
         #endregion
 
         #region Object Properties
-        
+
+        public string ID
+        {
+            get { return ConnectionManager.ID; }
+        }
+
         /// <summary>
         /// Connection String to use
         /// </summary>

@@ -5,7 +5,13 @@ using System.Collections.Generic;
 using System.Collections;
 
 namespace Pegasus.DtsWrapper
+
 {
+    public struct RuntimeConnection{
+        public String ConnectionManagerID { get; set; }
+        public int Index { get; set; }
+    }
+
     /// <summary>
     /// A Data Flow Component implements two interfaces: IDTSDesigntimeComponent100 and IDTSRuntimeComponent100.
     /// The IDTSRuntimeComponent100 interface defines the methods and properties that are called during execution of the component.
@@ -210,6 +216,7 @@ namespace Pegasus.DtsWrapper
             ConnectToAnotherPipelineComponent(sourceComponent.Name, sourceComponentOutput.Name, inputIndex);
         }
 
+    
 
         #endregion
 
@@ -644,6 +651,17 @@ namespace Pegasus.DtsWrapper
             ComponentMetaData.RuntimeConnectionCollection[0].ConnectionManagerID = cmg.ID;
         }
 
+        internal void SetUpConnection(ConnectionManager cmg, int index)
+        {
+            ComponentMetaData.RuntimeConnectionCollection[index].ConnectionManager = DtsConvert.GetExtendedInterface(cmg);
+            ComponentMetaData.RuntimeConnectionCollection[index].ConnectionManagerID = cmg.ID;
+        }
+
+        public void SetUpConnection(ISConnectionManager connectionManager, int index)
+        {
+            SetUpConnection(connectionManager.ConnectionManager, index);
+        }
+
         #endregion
 
         #region Get Connection Manager from Name
@@ -671,6 +689,49 @@ namespace Pegasus.DtsWrapper
         {
             ConnectionManager cm = ParentDataFlowTask.RootPackage.Connections[connectionName];
             return (ISConnectionManager)cm;
+        }
+
+        #endregion
+
+        #region Update Connection
+
+
+
+        public void updateRequiredConnection(String connectionManagerId, ISConnectionManager newConnectionManager)
+        {
+            foreach (IDTSRuntimeConnection100 conn in ComponentMetaData.RuntimeConnectionCollection)
+            {
+                Console.WriteLine("Working on " + conn.ConnectionManagerID);
+                if (connectionManagerId == conn.ConnectionManagerID)
+                {
+                    Console.WriteLine("\t" + "Found Match " + conn.ConnectionManagerID);
+                    conn.ConnectionManager = DtsConvert.GetExtendedInterface(newConnectionManager.ConnectionManager);
+                    ComponentMetaData.RuntimeConnectionCollection[0].ConnectionManagerID = newConnectionManager.ConnectionManager.ID;
+
+                }
+            }
+        }
+
+        public List<RuntimeConnection> getListOfConnections()
+        {
+            List<RuntimeConnection> conns = new List<RuntimeConnection>();
+            for(int i = 0; i < ComponentMetaData.RuntimeConnectionCollection.Count; i++)
+            {
+                conns.Add(new RuntimeConnection { ConnectionManagerID = ComponentMetaData.RuntimeConnectionCollection[i].ConnectionManagerID, Index = i });
+            }
+
+            /*
+            List<String> conns = new List<string>();
+            Console.WriteLine(ComponentMetaData.RuntimeConnectionCollection.Count);
+            foreach (IDTSRuntimeConnection100 conn in ComponentMetaData.RuntimeConnectionCollection)
+            {
+                //ISConnectionManager connMgr = new ISConnectionManager(conn.ConnectionManager);
+                //(conn.ConnectionManager as Microsoft.SqlServer.Dts.Runtime.ConnectionManager).Name
+                conns.Add(conn.ConnectionManagerID);
+            }
+            */
+
+            return conns;
         }
 
         #endregion

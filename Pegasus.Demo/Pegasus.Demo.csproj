@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdoNetSourceAndDestination.cs" />
+    <Compile Include="ConnReplacer.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="ControlFlowTaskExample.cs" />
     <Compile Include="DataFlowExample.cs" />

@@ -484,12 +484,28 @@ namespace Pegasus.DtsWrapper
 
         #endregion
 
+        #region Connections
+
+        public List<ISConnectionManager> getConnections()
+        {
+            List<ISConnectionManager> connections = new List<ISConnectionManager>();
+            var conns = Package.Connections;
+
+            for (int i = 0; i < Package.Connections.Count; i++)
+            {
+                connections.Add(Package.Connections[i]);
+            }
+            return connections;
+        }
+
+        #endregion
+
         #endregion
 
         #region Methods
 
         #region Add Parameter
-        
+
         /// <summary>
         /// Method to add a parameter.
         /// </summary>

@@ -101,20 +101,20 @@ namespace Pegasus.DtsWrapper
             get { return MainPipe.ComponentMetaDataCollection; }
         }
 
-        //private List<ISPipelineComponent> _pipelineComponentCollection = new List<ISPipelineComponent>();
-        //public List<ISPipelineComponent> ComponentMetaDataCollection
-        //{
-        //    get
-        //    {
-        //        _pipelineComponentCollection.Clear();
-        //        foreach (IDTSComponentMetaData100 component in ComponentMetaDataCollection_m)
-        //        {
-        //            ISPipelineComponent pc = new ISPipelineComponent(component.Name, component.ComponentClassID, MainPipe);
-        //            _pipelineComponentCollection.Add(pc);
-        //        }
-        //        return _pipelineComponentCollection;
-        //    }
-        //}
+        private List<ISPipelineComponent> _pipelineComponentCollection = new List<ISPipelineComponent>();
+        public List<ISPipelineComponent> ComponentMetaDataCollection
+        {
+            get
+            {
+                _pipelineComponentCollection.Clear();
+                foreach (IDTSComponentMetaData100 component in ComponentMetaDataCollection_m)
+                {
+                    ISPipelineComponent pc = new ISPipelineComponent(component.Name, component.ComponentClassID, MainPipe);
+                    _pipelineComponentCollection.Add(pc);
+                }
+                return _pipelineComponentCollection;
+            }
+        }
 
         //DefaultBufferMaxRows
         public int DefaultBufferMaxRows

@@ -11,9 +11,10 @@ namespace Pegasus.Demo
             DateTime now = DateTime.Now;
             Console.WriteLine("Start Time:  " + now.ToString() + "\n");
 
-            CreateFolder(Constants.StorageFoldePath);
+            //CreateFolder(Constants.StorageFoldePath);
 
-            RunDemoExample();
+            //RunDemoExample();
+            ReplaceConnection();
 
             Console.WriteLine("\n\nDone!!!" + "\n" + "*******************************");
             DateTime endTime = DateTime.Now;
@@ -21,6 +22,12 @@ namespace Pegasus.Demo
             Console.WriteLine("Duration: " + (DateTime.Now - now).Minutes.ToString() + " mins");
             Console.WriteLine("Press any key to exit....");
             Console.ReadKey();
+        }
+
+        private static void ReplaceConnection()
+        {
+            ConnReplacer cr = new ConnReplacer();
+            cr.ReplaceConnection();
         }
 
         private static void RunDemoExample()
