@@ -47,8 +47,8 @@ namespace Pegasus.Demo
 
 
             //  //  //  Data Flow Examples
-            DataFlowExample de = new DataFlowExample();
-            de.GenerateProjectToLoadTextFilesFromSqlServerDatabase();
+            //DataFlowExample de = new DataFlowExample();
+            //de.GenerateProjectToLoadTextFilesFromSqlServerDatabase();
 
             //  Load all text files in a folder to a database
             //de.GenerateProjectToLoadTextFilesToSqlServerDatabase();
@@ -64,6 +64,10 @@ namespace Pegasus.Demo
             //  //  //  Excel Example
             //ExcelExample ee = new ExcelExample();
             //ee.ExcelToSqlServerTable();
+
+            //  //  //  Sort Example
+            SortExample se = new SortExample();
+            se.CreatePackageWithSort();
         }
 
         private static void CreateFolder(string folderPath)

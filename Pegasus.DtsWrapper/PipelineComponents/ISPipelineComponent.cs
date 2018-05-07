@@ -44,6 +44,13 @@ namespace Pegasus.DtsWrapper
         {
             bool componentExists = false;
             _readWriteCols = new List<string>();
+            /*if (mainPipe == null)
+            {
+                Console.WriteLine("HMMMMMMMM ...... mainPipe is null");
+            } else
+            {
+                Console.WriteLine("mainPipe is NOT null");
+            }*/
             foreach (IDTSComponentMetaData100 comp in mainPipe.ComponentMetaDataCollection)
             {
                 if (comp.Name == componentName)

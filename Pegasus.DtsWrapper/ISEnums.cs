@@ -464,4 +464,14 @@ namespace Pegasus.DtsWrapper
         DTSExcelVer_5,
         DTSExcelVer_8
     }
+
+    public enum StringComparisonFlag
+    {
+        IGNORE_CASE,
+        IGNORE_KANA_TYPE,
+        IGNORE_CHARACTER_WIDTH,
+        IGNORE_NONSPACING_CHARACTERS,
+        IGNORE_SYMBOLS,
+        SORT_PUNCTUATION_AS_SYMBOLS
+    }
 }

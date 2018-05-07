@@ -23,6 +23,15 @@ namespace Pegasus.DtsWrapper
             base("Microsoft.Pipeline", displayName, immediateContainer)
         {
             MainPipe = TaskHost.InnerObject as MainPipe;
+
+            /*if (MainPipe == null)
+            {
+                Console.WriteLine("Main Pipe is null");
+            } else
+            {
+                Console.WriteLine("MainPipe NOT null");
+            }*/
+
             if(package == null)
             {
                 RootPackage = (ISContainer.GetActualPackage(immediateContainer).Container) as Microsoft.SqlServer.Dts.Runtime.Package;

@@ -39,10 +39,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.SqlServer.ADONETSrc\v4.0_13.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.ADONETSrc.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SQLServer.DTSPipelineWrap, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.SqlServer.DTSPipelineWrap\v4.0_11.0.0.0__89845dcd8080cc91\Microsoft.SQLServer.DTSPipelineWrap.dll</HintPath>
+      <HintPath>..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.SqlServer.DTSPipelineWrap\v4.0_13.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.DTSPipelineWrap.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
@@ -54,9 +54,9 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>..\..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.SqlServer.ExecPackageTaskWrap\v4.0_13.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.ExecPackageTaskWrap.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.SqlServer.ManagedDTS\v4.0_11.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.ManagedDTS.dll</HintPath>
+      <HintPath>..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.SqlServer.ManagedDTS\v4.0_13.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.ManagedDTS.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SQLServer.PipelineHost, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -130,6 +130,7 @@
     <Compile Include="ISParameter.cs" />
     <Compile Include="ISPath.cs" />
     <Compile Include="PipelineComponents\ISRowCountComponent.cs" />
+    <Compile Include="PipelineComponents\ISSortComponent.cs" />
     <Compile Include="PipelineComponents\ISSourceComponents.cs" />
     <Compile Include="PipelineComponents\ColumnInputOutput\ISOutput.cs" />
     <Compile Include="PipelineComponents\ColumnInputOutput\ISOutputColumn.cs" />
